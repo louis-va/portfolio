@@ -1,4 +1,7 @@
 ---
+import Container from './Container.astro';
+import Header from './Header.astro';
+
 interface Props {
 	title: string;
 }
@@ -21,7 +24,12 @@ const { title } = Astro.props;
 		</script>
 	</head>
 	<body>
-		<slot />
+		<Container>
+			<Header />
+			<main>
+				<slot />
+			</main>
+		</Container>
 	</body>
 </html>
 
