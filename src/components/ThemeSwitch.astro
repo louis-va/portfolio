@@ -1,0 +1,70 @@
+---
+---
+
+<div class="theme-switch">
+  <button id="light-theme-btn">
+    [<span class="indicator">&#9642;</span>] 
+    <span class="value">LIGHT</span>
+  </button>
+
+  <button id="dark-theme-btn">
+    [<span class="indicator">&#9642;</span>] 
+    <span class="value">DARK</span>
+  </button>
+</div>
+
+<style>
+  .theme-switch {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .1rem;
+  }
+  button {
+    font-family: var(--font-monospace);
+    font-size: .65rem;
+  }
+  button .indicator {
+    color: var(--color-accent);
+    opacity: 0;
+  }
+  button.active .indicator {
+    opacity: 1;
+  }
+  button:hover .indicator {
+    color: var(--color-text-muted);
+    opacity: 1;
+  }
+  button.active:hover .indicator {
+    color: var(--color-accent);
+  }
+  button .value {
+    position: relative;
+    font-size: .75rem;
+    top: .1rem;
+  }
+</style>
+
+<script>
+  function setButtons(theme: string) {
+    if (theme==="light") {
+      document.getElementById('light-theme-btn')!.classList.add("active");
+      document.getElementById('dark-theme-btn')!.classList.remove("active");
+    } else {
+      document.getElementById('light-theme-btn')!.classList.remove("active");
+      document.getElementById('dark-theme-btn')!.classList.add("active");
+    }
+  }
+
+  function setTheme(theme: "light" | "dark") {
+    localStorage.setItem("theme", theme);
+    document.documentElement.setAttribute("data-theme", theme);
+    setButtons(theme);
+  }
+
+  document.getElementById('light-theme-btn')?.addEventListener('click', ()=>setTheme('light'));
+  document.getElementById('dark-theme-btn')?.addEventListener('click', ()=>setTheme('dark'));
+
+  const theme = localStorage.getItem("theme") || "light";
+  setButtons(theme);
+</script>

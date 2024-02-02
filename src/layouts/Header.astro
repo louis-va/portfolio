@@ -1,5 +1,6 @@
 ---
 import Logo from "../components/Logo.astro"
+import ThemeSwitch from "../components/ThemeSwitch.astro"
 ---
 
 <header>
@@ -7,8 +8,7 @@ import Logo from "../components/Logo.astro"
     <Logo />
   </a>
   <div class="options">
-    [x] LIGHT<br/>
-    [ ] DARK
+    <ThemeSwitch />
   </div>
 </header>
 
@@ -17,10 +17,6 @@ import Logo from "../components/Logo.astro"
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 3rem;
-  }
-  .options {
-    font-family: var(--font-monospace);
-    font-size: .65rem;
+    margin-bottom: 4rem;
   }
 </style>

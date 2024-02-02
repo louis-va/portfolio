@@ -15,6 +15,10 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<script>
+			const theme = localStorage.getItem("theme") || "light";
+      document.documentElement.setAttribute("data-theme", theme);
+		</script>
 	</head>
 	<body>
 		<slot />
@@ -38,19 +42,30 @@ const { title } = Astro.props;
 		font-display: swap;
 	}
 	:root {
-		--color-white: #FFFEFA;
-		--color-black: #020226;
-		--color-black-muted: #818090;
-		--color-grey: #DADADA;
-		--color-border: #CCCCD0;
 		--font-sans-serif: 'Manrope', sans-serif;
 		--font-monospace: 'Red Hat Mono', monospace;
 		--gutter: 1.5rem;
 	}
+	[data-theme="light"] {
+		--color-bg: #FFFEFA;
+		--color-text: #020226;
+		--color-text-muted: #818090;
+		--color-card: #DADADA;
+		--color-border: #CCCCD0;
+		--color-accent: #EE4444;
+	}
+	[data-theme="dark"] {
+		--color-bg: #141418;
+		--color-text: #FFFEFA;
+		--color-text-muted: #818090;
+		--color-card: #DADADA;
+		--color-border: #CCCCD0;
+		--color-accent: #EE4444;
+	}
 	html {
 		font-family: var(--font-sans-serif);
-		background: var(--color-white);
-		color: var(--color-black);
+		background: var(--color-bg);
+		color: var(--color-text);
 	}
 
 	/* RESET */
@@ -76,5 +91,14 @@ const { title } = Astro.props;
 	}
 	p, h1, h2, h3, h4, h5, h6 {
 			overflow-wrap: break-word;
+	}
+	button {
+		background: none;
+		color: inherit;
+		border: none;
+		padding: 0;
+		font: inherit;
+		cursor: pointer;
+		outline: inherit;
 	}
 </style>
