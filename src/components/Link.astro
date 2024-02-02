@@ -1,0 +1,47 @@
+---
+interface Props {
+	href: string;
+  external?: boolean;
+}
+
+const { href, external=false } = Astro.props;
+---
+
+<div>
+  <a 
+    href={href}
+    target={external ? '_blank' : '_self'}
+    rel={external ? 'noreferrer' : undefined}
+  >
+    <slot />
+    {external&&(
+      <svg width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path 
+          d="M5.4355 0.672405L5.4454 5.49346L4.3713 5.49841L4.38615 2.6622L4.29211 2.61766L0.951029 5.95874L0.14917 5.15688L3.4853 1.82075L3.4457 1.72175L0.609497 1.7366L0.614446 0.662506L5.4355 0.672405Z" 
+          fill="currentColor"
+        />
+      </svg>
+    )}
+  </a>
+</div>
+
+<style>
+  a {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-monospace);
+    color: var(--color-black);
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+
+  a svg {
+    color: var(--color-black-muted);
+    margin-left: .3rem;
+    margin-bottom: .25rem;
+    width: .5rem;
+    height: .5rem;
+  }
+</style>

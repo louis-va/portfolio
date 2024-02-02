@@ -1,0 +1,64 @@
+---
+import Link from "./Link.astro"
+---
+
+<section class="hero">
+  <div class="about">
+    <div class="intro">
+      <div>
+        <h1>Louis Van Aken</h1>
+      </div>
+      <div>
+        <p>I’m a fullstack developer that enjoys working on technical and creative applications.</p>
+        <p>I’m currently studying at Becode and looking for an internship.</p>
+      </div>
+    </div>
+    <div class="info">
+      <div>
+        <p>13:08<br/>BRUSSELS,<br/>BELGIUM</p>
+      </div>
+      <div>
+        <Link href="https://github.com/louis-va" external>GITHUB</Link>
+        <Link href="https://github.com/louis-va" external>LINKEDIN</Link>
+        <Link href="mailto:vanakenlouis@gmail.com">EMAIL</Link>
+      </div>
+    </div>
+  </div>
+  <div class="game"></div>
+</section>
+
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--gutter);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .about {
+    grid-column: span 2 / span 2;
+  }
+  .about .intro {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--gutter);
+  }
+  .about .intro h1, .about .intro p {
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin-bottom: .5rem;
+  }
+  .about .info {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--gutter);
+    margin-top: 12rem;
+    margin-bottom: 1rem;
+    font-family: var(--font-monospace);
+  }
+
+  .game {
+    grid-column: span 1 / span 1;
+    background-color: var(--color-grey);
+  }
+</style>
