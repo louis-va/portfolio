@@ -1,5 +1,6 @@
 ---
 import Link from "./Link.astro"
+import Time from "./Time.astro"
 ---
 
 <section class="hero">
@@ -15,7 +16,11 @@ import Link from "./Link.astro"
     </div>
     <div class="info">
       <div>
-        <p>13:08<br/>BRUSSELS,<br/>BELGIUM</p>
+        <p>
+          <Time /><br/>
+          BRUSSELS,<br/>
+          BELGIUM
+        </p>
       </div>
       <div>
         <Link href="https://github.com/louis-va" external>GITHUB</Link>
@@ -34,7 +39,6 @@ import Link from "./Link.astro"
     gap: var(--gutter);
     border-bottom: 1px solid var(--color-border);
   }
-
   .about {
     grid-column: span 2 / span 2;
   }
@@ -55,10 +59,29 @@ import Link from "./Link.astro"
     margin-top: 12rem;
     margin-bottom: 1rem;
     font-family: var(--font-monospace);
+    color: var(--color-black-muted);
   }
-
   .game {
     grid-column: span 1 / span 1;
     background-color: var(--color-grey);
+    min-height: 20rem;
+  }
+
+  @media screen and (max-width: 960px) {
+    .hero {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+    .about {
+      grid-column: span 1 / span 1;
+    }
+    .game {
+      grid-column: span 1 / span 1;
+    }
+  }
+
+  @media screen and (max-width: 680px) {
+    .about .intro {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
   }
 </style>

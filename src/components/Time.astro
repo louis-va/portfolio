@@ -1,0 +1,30 @@
+---
+---
+
+<span>
+  <span id="time-hours"></span><span id="time-colon">:</span><span id="time-minutes"></span>
+</span>
+
+<script>
+  function updateTime() {
+    var now = new Date();
+    var utcOffset = 1; // UTC+1
+    var utcTime = now.getTime() + (now.getTimezoneOffset() * 60000);
+    var localTime = new Date(utcTime + (3600000 * utcOffset));
+    
+    var hours = localTime.getHours().toString().padStart(2, '0');
+    var minutes = localTime.getMinutes().toString().padStart(2, '0');
+    
+    document.getElementById('time-hours')!.textContent = hours;
+    document.getElementById('time-minutes')!.textContent = minutes;
+  }
+
+  function blinkColon() {
+    var colonElement = document.getElementById('time-colon');
+    colonElement!.style.visibility = (colonElement!.style.visibility === 'visible') ? 'hidden' : 'visible';
+  }
+
+  updateTime();
+  setInterval(updateTime, 1000);
+  setInterval(blinkColon, 500);
+</script>
