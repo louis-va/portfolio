@@ -1,0 +1,35 @@
+---
+---
+
+<div class="logo">
+  <div class="default">
+    <svg width="70" height="60" viewBox="0 0 70 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M20 0H10V10H20V20H0V30H10V40H20V60H50V40H60V30H70V20H50V10H60V0H50V10H40V20H30V10H20V0ZM50 40V30H40V40H50ZM20 40V30H30V40H20Z" fill="currentColor"/>
+    </svg>        
+  </div>
+  <div class="hover">
+    <svg width="70" height="60" viewBox="0 0 70 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M30 0H20V20H10V10H0V20H10V40H20V60H50V40H60V20H70V10H60V20H50V0H40V20H30V0ZM50 40H40V30H50V40ZM20 40V30H30V40H20Z" fill="currentColor"/>
+    </svg>        
+  </div>
+</div>
+
+<style>
+  .logo {
+    color: var(--color-black);
+    width: 2.25rem;
+    height: auto;
+  }
+  .logo .default {
+    display: block;
+  }
+  .logo:hover .default {
+    display: none;
+  }
+  .logo .hover {
+    display: none;
+  }
+  .logo:hover .hover {
+    display: block;
+  }
+</style>

@@ -1,0 +1,26 @@
+---
+import Logo from "../components/Logo.astro"
+---
+
+<header>
+  <a href="/">
+    <Logo />
+  </a>
+  <div class="options">
+    [x] LIGHT<br/>
+    [ ] DARK
+  </div>
+</header>
+
+<style>
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+  }
+  .options {
+    font-family: var(--font-monospace);
+    font-size: .65rem;
+  }
+</style>
