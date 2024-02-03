@@ -1,0 +1,63 @@
+---
+interface Props {
+	name: string;
+  thumbnail: string;
+  slug: string;
+  number: string;
+}
+
+const { name, thumbnail, slug, number } = Astro.props;
+---
+
+<a href={`/${slug}`} class="card">
+  <div class="title">
+    <h2>{name}</h2>
+    <span>{number}</span>
+  </div>
+  <div class="thumbnail">
+    <div class="screen">
+      <img src={thumbnail} alt={name} srcset="">
+    </div>
+  </div>
+</a>
+
+<style>
+  a.card {
+    display: block;
+    width: 100%;
+    border-top: 1px solid var(--color-border);
+    text-decoration: none;
+  }
+  .title {
+    display: flex;
+    justify-content: space-between;
+    padding: .75rem 0;
+  }
+  .title h2, .title span{
+    font-family: var(--font-monospace);
+    color: var(--color-text);
+    text-transform: uppercase;
+    font-size: .85rem;
+    font-weight: 400;
+  }
+  .thumbnail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1/1;
+    padding: 2rem;
+    background-color: var(--color-card);
+    border-radius: .5rem;
+  }
+  .thumbnail .screen {
+    width: 100%;
+    background-color: var(--color-border);
+    padding: .5rem;
+    border-radius: .75rem;
+  }
+  .thumbnail img {
+    width: 100%;
+    height: auto;
+    border-radius: .25rem;
+  }
+</style>

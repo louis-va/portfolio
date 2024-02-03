@@ -1,0 +1,57 @@
+---
+import Card from "./Card.astro"
+---
+
+<section class="grid">
+  <Card 
+		name="Popcorn Palace"
+		thumbnail="/images/popcorn-palace/popa-thumbnail.jpg"
+		slug="popcorn-palace"
+		number="01"
+	/>
+  <Card 
+		name="Popcorn Palace"
+		thumbnail="/images/popcorn-palace/popa-thumbnail.jpg"
+		slug="popcorn-palace"
+		number="01"
+	/>
+  <Card 
+		name="Popcorn Palace"
+		thumbnail="/images/popcorn-palace/popa-thumbnail.jpg"
+		slug="popcorn-palace"
+		number="01"
+	/>
+  <Card 
+		name="Popcorn Palace"
+		thumbnail="/images/popcorn-palace/popa-thumbnail.jpg"
+		slug="popcorn-palace"
+		number="01"
+	/>
+  <Card 
+		name="Popcorn Palace"
+		thumbnail="/images/popcorn-palace/popa-thumbnail.jpg"
+		slug="popcorn-palace"
+		number="01"
+	/>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: var(--gutter);
+    row-gap: 3rem;
+    margin-top: 4rem;
+  }
+  @media screen and (max-width: 960px) {
+    .grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media screen and (max-width: 680px) {
+    .grid {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+  }
+</style>
