@@ -1,0 +1,44 @@
+---
+---
+
+<div class="arrow">
+  <svg class="sq1" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="10" height="10" fill="currentColor"/>
+  </svg>
+  <svg class="sq2" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="10" height="10" fill="currentColor"/>
+  </svg>
+  <svg class="sq3" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="10" height="10" fill="currentColor"/>
+  </svg>
+</div>
+
+<style is:global>
+  .arrow {
+    position: relative;
+    margin-right: .5rem;
+    color: var(--color-accent);
+  }
+  .arrow svg {
+    position: relative;
+    width: .15rem;
+    height: .15rem;
+    transition: all 50ms;
+  }
+  .arrow svg.sq1 {
+    top: .15rem;
+  }
+  .arrow svg.sq3 {
+    bottom: .15rem;
+  }
+
+  .arrow-target:hover .arrow svg.sq1 {
+    top: 0rem;
+  }
+  .arrow-target:hover .arrow svg.sq2 {
+    left: .15rem;
+  }
+  .arrow-target:hover .arrow svg.sq3 {
+    bottom: 0rem;
+  }
+</style>

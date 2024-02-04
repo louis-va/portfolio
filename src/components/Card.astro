@@ -1,4 +1,6 @@
 ---
+import Arrow from './Arrow.astro';
+
 interface Props {
 	name: string;
   thumbnail: string;
@@ -9,10 +11,13 @@ interface Props {
 const { name, thumbnail, slug, number } = Astro.props;
 ---
 
-<a href={`/${slug}`} class="card">
+<a href={`/${slug}`} class="card arrow-target">
   <div class="title">
-    <h2>{name}</h2>
     <span>{number}</span>
+    <div class="name">
+      <Arrow />
+      <h2>{name}</h2>
+    </div>
   </div>
   <div class="thumbnail">
     <div class="screen">
@@ -40,6 +45,10 @@ const { name, thumbnail, slug, number } = Astro.props;
     font-size: .85rem;
     font-weight: 400;
   }
+  .title .name {
+    display: flex;
+    align-items: center;
+  }
   .thumbnail {
     display: flex;
     justify-content: center;
@@ -48,6 +57,7 @@ const { name, thumbnail, slug, number } = Astro.props;
     padding: 2rem;
     background-color: var(--color-card);
     border-radius: .5rem;
+    transition: all 150ms ease-out;
   }
   .thumbnail .screen {
     width: 100%;
@@ -59,5 +69,8 @@ const { name, thumbnail, slug, number } = Astro.props;
     width: 100%;
     height: auto;
     border-radius: .25rem;
+  }
+  a.card:hover .thumbnail {
+    padding: 1.75rem;
   }
 </style>
