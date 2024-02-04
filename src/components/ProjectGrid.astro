@@ -1,38 +1,21 @@
 ---
-import Card from "./Card.astro"
+import { getCollection } from 'astro:content';
+import ProjectCard from "./ProjectCard.astro"
+
+const projects = await getCollection('projects');
+projects.sort((a, b) => {
+  return a.data.id - b.data.id;
+});
 ---
 
 <section class="grid">
-  <Card 
-		name="Popcorn Palace"
-		thumbnail="/images/popcorn-palace/popa-thumbnail.jpg"
-		slug="popcorn-palace"
-		number="01"
-	/>
-  <Card 
-		name="Popcorn Palace"
-		thumbnail="/images/popcorn-palace/popa-thumbnail.jpg"
-		slug="popcorn-palace"
-		number="01"
-	/>
-  <Card 
-		name="Popcorn Palace"
-		thumbnail="/images/popcorn-palace/popa-thumbnail.jpg"
-		slug="popcorn-palace"
-		number="01"
-	/>
-  <Card 
-		name="Popcorn Palace"
-		thumbnail="/images/popcorn-palace/popa-thumbnail.jpg"
-		slug="popcorn-palace"
-		number="01"
-	/>
-  <Card 
-		name="Popcorn Palace"
-		thumbnail="/images/popcorn-palace/popa-thumbnail.jpg"
-		slug="popcorn-palace"
-		number="01"
-	/>
+	{projects.map(project => (
+		<ProjectCard
+			name={project.data.title}
+			slug={project.slug}
+			number={project.data.id}
+		/>
+	))}
 </section>
 
 <style>

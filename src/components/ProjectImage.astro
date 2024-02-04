@@ -1,0 +1,87 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+interface Props {
+  src: string;
+  alt: string;
+}
+
+const { src, alt } = Astro.props;
+
+/* Load image */
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/images/projects/*/*.{jpeg,jpg,png,gif}');
+
+const imageMobile = images[`/src/images/projects/${src}-m.jpg`];
+const imageDesktop = images[`/src/images/projects/${src}-d.jpg`];
+
+let image, device;
+if (imageMobile) {
+  image = imageMobile;
+  device = 'mobile';
+} else if (imageDesktop) {
+  image = imageDesktop;
+  device = 'desktop';
+} else {
+  throw new Error(`The image doesn't exist`);
+}
+---
+
+<div class="project-img" data-device={device}>
+  <div class="screen">
+    <Image src={image()} alt={alt} >
+  </div>
+</div>
+
+<style is:global>
+  .project-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1/1;
+    background-color: var(--color-card);
+    border-radius: .5rem;
+    transition: padding 150ms ease-out;
+  }
+  .project-img .screen {
+    background-color: var(--color-border);
+  }
+
+  /* MOBILE project-img */
+  .project-img[data-device='mobile'] {
+    padding: 2rem 2rem 0 2rem;
+  }
+  .project-img[data-device='mobile'] .screen {
+    height: 100%;
+    width: auto;
+    padding: .5rem .5rem 0 .5rem;
+    border-radius: 1rem 1rem 0 0;
+  }
+  .project-img[data-device='mobile'] img {
+    height: 100%;
+    width: auto;
+    border-radius: .5rem .5rem 0 0;
+  }
+  .screenshot-target:hover .project-img[data-device='mobile'] {
+    padding: 1.7rem 1.7rem 0 1.7rem;
+  }
+
+  /* DESKTOP project-img */
+  .project-img[data-device='desktop'] {
+    padding: 2rem;
+  }
+  .project-img[data-device='desktop'] .screen {
+    width: 100%;
+    height: auto;
+    padding: .5rem;
+    border-radius: 1rem;
+  }
+  .project-img[data-device='desktop'] img {
+    width: 100%;
+    height: auto;
+    border-radius: .5rem;
+  }
+  .screenshot-target:hover .project-img[data-device='desktop'] {
+    padding: 1.85rem;
+  }
+</style>

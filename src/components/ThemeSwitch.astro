@@ -46,6 +46,8 @@
 </style>
 
 <script>
+  import getTheme from '../utils/theme.utils';
+
   function setButtons(theme: string) {
     if (theme==="light") {
       document.getElementById('light-theme-btn')!.classList.add("active");
@@ -65,6 +67,5 @@
   document.getElementById('light-theme-btn')?.addEventListener('click', ()=>setTheme('light'));
   document.getElementById('dark-theme-btn')?.addEventListener('click', ()=>setTheme('dark'));
 
-  const theme = localStorage.getItem("theme") || "light";
-  setButtons(theme);
+  setButtons(getTheme());
 </script>

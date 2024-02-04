@@ -23,7 +23,7 @@
     position: relative;
     width: .15rem;
     height: .15rem;
-    transition: all 50ms;
+    transition: all 75ms;
   }
   .arrow svg.sq1 {
     top: .15rem;
@@ -40,5 +40,17 @@
   }
   .arrow-target:hover .arrow svg.sq3 {
     bottom: 0rem;
+  }
+
+  @media (hover: none) {
+    .arrow svg.sq1 {
+      top: 0rem;
+    }
+    .arrow svg.sq2 {
+      left: .15rem;
+    }
+    .arrow svg.sq3 {
+      bottom: 0rem;
+    }
   }
 </style>
