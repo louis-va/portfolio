@@ -1,4 +1,5 @@
 ---
+import { fade } from 'astro:transitions';
 import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
 
@@ -27,7 +28,10 @@ if (imageMobile) {
 }
 ---
 
-<div class="project-img" data-device={device}>
+<div 
+  class="project-img" 
+  data-device={device}
+>
   <div class="screen">
     <Image src={image()} alt={alt} >
   </div>
@@ -37,51 +41,51 @@ if (imageMobile) {
   .project-img {
     display: flex;
     justify-content: center;
-    align-items: center;
     aspect-ratio: 1/1;
     background-color: var(--color-card);
     border-radius: .5rem;
-    transition: padding 150ms ease-out;
   }
   .project-img .screen {
     background-color: var(--color-border);
   }
 
-  /* MOBILE project-img */
+  /* Mobile device */
   .project-img[data-device='mobile'] {
-    padding: 2rem 2rem 0 2rem;
+    align-items: flex-end;
   }
   .project-img[data-device='mobile'] .screen {
-    height: 100%;
+    height: 90%;
     width: auto;
     padding: .5rem .5rem 0 .5rem;
     border-radius: 1rem 1rem 0 0;
+    transition: height 150ms ease-out;
   }
   .project-img[data-device='mobile'] img {
     height: 100%;
     width: auto;
     border-radius: .5rem .5rem 0 0;
   }
-  .screenshot-target:hover .project-img[data-device='mobile'] {
-    padding: 1.7rem 1.7rem 0 1.7rem;
+  .screenshot-target:hover .project-img[data-device='mobile'] .screen {
+    height: 92%;
   }
 
-  /* DESKTOP project-img */
+  /* Desktop device */
   .project-img[data-device='desktop'] {
-    padding: 2rem;
+    align-items: center;
   }
   .project-img[data-device='desktop'] .screen {
-    width: 100%;
+    width: 85%;
     height: auto;
     padding: .5rem;
     border-radius: 1rem;
+    transition: width 150ms ease-out;
   }
   .project-img[data-device='desktop'] img {
     width: 100%;
     height: auto;
     border-radius: .5rem;
   }
-  .screenshot-target:hover .project-img[data-device='desktop'] {
-    padding: 1.85rem;
+  .screenshot-target:hover .project-img[data-device='desktop'] .screen {
+    width: 87%;
   }
 </style>

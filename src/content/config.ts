@@ -8,11 +8,16 @@ const projectCollection = defineCollection({
     type: z.string(),
     year: z.number(),
     stack: z.array(z.string()).optional(),
-    url: z.string().optional(),
-    role: z.string(),
+    links: z.array(z.object({
+      name: z.string(),
+      value: z.string(),
+      url: z.string(),
+    })).optional(),
+    roles: z.array(z.string()),
+    images: z.array(z.string()).optional(),
   }),
 });
 
 export const collections = {
-  'project': projectCollection,
+  'projects': projectCollection,
 };

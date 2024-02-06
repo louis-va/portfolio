@@ -2,7 +2,7 @@
 ---
 
 <span>
-  <span id="time-hours"></span><span id="time-colon">:</span><span id="time-minutes"></span>
+  <span id="time-hours">00</span><span id="time-colon">:</span><span id="time-minutes">00</span>
 </span>
 
 <script>
@@ -14,14 +14,22 @@
     
     var hours = localTime.getHours().toString().padStart(2, '0');
     var minutes = localTime.getMinutes().toString().padStart(2, '0');
-    
-    document.getElementById('time-hours')!.textContent = hours;
-    document.getElementById('time-minutes')!.textContent = minutes;
+
+    const hoursElement = document.getElementById('time-hours');
+    const minutesElement = document.getElementById('time-minutes');
+
+    if (hoursElement && minutesElement) {
+      hoursElement!.textContent = hours;
+      minutesElement!.textContent = minutes;
+    }
   }
 
   function blinkColon() {
-    var colonElement = document.getElementById('time-colon');
-    colonElement!.style.visibility = (colonElement!.style.visibility === 'visible') ? 'hidden' : 'visible';
+    const colonElement = document.getElementById('time-colon');
+
+    if (colonElement) {
+      colonElement!.style.visibility = (colonElement!.style.visibility === 'visible') ? 'hidden' : 'visible';
+    }
   }
 
   updateTime();

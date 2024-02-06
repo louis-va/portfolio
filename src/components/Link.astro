@@ -4,9 +4,10 @@ import Arrow from './Arrow.astro';
 interface Props {
 	href: string;
   external?: boolean;
+  size?: 'small' | 'base';
 }
 
-const { href, external=false } = Astro.props;
+const { href, external=false, size='base' } = Astro.props;
 ---
 
 <div>
@@ -14,7 +15,7 @@ const { href, external=false } = Astro.props;
     href={href}
     target={external ? '_blank' : '_self'}
     rel={external ? 'noreferrer' : undefined}
-    class="arrow-target"
+    class={`arrow-target ${size}`}
   >
     <Arrow />
     <slot />
@@ -29,5 +30,8 @@ const { href, external=false } = Astro.props;
     font-size: .85rem;
     color: var(--color-text);
     text-decoration: none;
+  }
+  a.small {
+    font-size: .75rem;
   }
 </style>

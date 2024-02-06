@@ -64,8 +64,13 @@
     setButtons(theme);
   }
 
-  document.getElementById('light-theme-btn')?.addEventListener('click', ()=>setTheme('light'));
-  document.getElementById('dark-theme-btn')?.addEventListener('click', ()=>setTheme('dark'));
+  function setupThemeSwitch() {
+    setButtons(getTheme());
+    document.getElementById('light-theme-btn')?.addEventListener('click', ()=>setTheme('light'));
+    document.getElementById('dark-theme-btn')?.addEventListener('click', ()=>setTheme('dark'));
+  }
 
-  setButtons(getTheme());
+  document.addEventListener('astro:after-swap', () => setupThemeSwitch());
+
+  setupThemeSwitch();
 </script>

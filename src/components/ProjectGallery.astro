@@ -1,0 +1,33 @@
+---
+import ProjectImage from './ProjectImage.astro';
+
+interface Props {
+	images: string[];
+  folder: string;
+}
+
+const { images, folder } = Astro.props;
+---
+
+<div class="gallery">
+  {images.map((image, index) => (
+    <ProjectImage 
+      src={`${folder}/${image}`}
+      alt={`Screenshot ${index}`}
+    />
+  ))}
+</div>
+
+<style>
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--gutter);
+    margin-top: var(--gutter);
+  }
+  @media screen and (max-width: 680px) {
+    .gallery {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+  }
+</style>

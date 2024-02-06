@@ -1,0 +1,53 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProjectImage from '../../components/ProjectImage.astro';
+import ProjectInfo from '../../components/ProjectInfo.astro';
+import ProjectGallery from '../../components/ProjectGallery.astro';
+
+import { getCollection } from 'astro:content';
+
+// Generate a new path for every project
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map(entry => ({
+    params: { slug: entry.slug }, props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+---
+
+<Layout title={`Louis Van Aken | ${entry.data.title}`}>
+  <div class="layout">
+    <div class="data">
+      <ProjectInfo entry={entry} />
+    </div>
+    <div class="images">
+      <div class="thumbnail">
+        <ProjectImage 
+          src={`${entry.slug}/thumbnail`}
+          alt={entry.data.title}
+        />
+      </div>
+      {entry.data.images&&(
+        <ProjectGallery
+          images={entry.data.images}
+          folder={entry.slug}
+        />
+      )}
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .layout {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--gutter);
+  }
+  @media screen and (max-width: 960px) {
+    .layout {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+  }
+</style>

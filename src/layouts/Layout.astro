@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions, fade } from 'astro:transitions';
 import Container from './Container.astro';
 import Header from './Header.astro';
 
@@ -6,27 +7,53 @@ interface Props {
 	title: string;
 }
 
-const { title } = Astro.props;
+const { title } = Astro.props;	
+
+/* View transition animation */
+const fadeAnimation = {
+  old: {
+    name: "fade-out",
+    duration: "0.15s",
+    easing: "ease-out",
+    fillMode: "forwards",
+  },
+  new: {
+    name: "fade-in",
+		delay: "0.3s",
+    duration: "0.15s",
+    easing: "ease-out",
+    fillMode: "backwards",
+  },
+};
+
+const pageAnimation = {
+  forwards: fadeAnimation,
+  backwards: fadeAnimation,
+};
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" transition:animate='none'>
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Fullstack developer portfolio showcasing my web development projects." />
+		<meta name="description" content="I’m a fullstack developer that enjoys working on technical and creative applications." />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<ViewTransitions />
 		<script>
 			import getTheme from '../utils/theme.utils';
-      document.documentElement.setAttribute("data-theme", getTheme());
+			document.addEventListener('astro:after-swap', () => {
+      	document.documentElement.setAttribute("data-theme", getTheme());
+			});
+			document.documentElement.setAttribute("data-theme", getTheme());
 		</script>
 	</head>
 	<body>
 		<Container>
 			<Header />
-			<main>
+			<main transition:animate={pageAnimation}>
 				<slot />
 			</main>
 		</Container>
@@ -109,4 +136,27 @@ const { title } = Astro.props;
 		cursor: pointer;
 		outline: inherit;
 	}
+
+	/* VIEW TRANSITION ANIMATION */
+	@keyframes fade-out {
+    from {
+      transform: translateY(0rem);
+			opacity: 1;
+    }
+    to {
+      transform: translateY(.5rem);
+			opacity: 0;
+    }
+  }
+
+	@keyframes fade-in {
+    from {
+      transform: translateY(-.5rem);
+			opacity: 0;
+    }
+    to {
+      transform: translateY(0rem);
+			opacity: 1;
+    }
+  }
 </style>

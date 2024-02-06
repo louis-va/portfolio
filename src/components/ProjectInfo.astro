@@ -1,0 +1,91 @@
+---
+import Link from "./Link.astro"
+
+interface Props {
+	entry: any;
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<div class="info">
+  <header>
+    <h1>{entry.data.title}</h1>
+    <Content />
+  </header>
+  <div class="project-data">
+    <div class="row">
+      <div class="left">ID</div>
+      <div class="right">{entry.data.id<10?`0${entry.data.id}`:entry.data.id}</div>
+    </div>
+    <div class="row">
+      <div class="left">Type</div>
+      <div class="right">{entry.data.type}</div>
+    </div>
+    <div class="row">
+      <div class="left">Year</div>
+      <div class="right">{entry.data.year}</div>
+    </div>
+    <div class="row">
+      <div class="left">Role</div>
+      <div class="right">{entry.data.roles.map((role: string)=>(<div>{role}</div>))}</div>
+    </div>
+    <div class="row">
+      <div class="left">Stack</div>
+      <div class="right">{entry.data.stack.map((tech: string)=>(<div>{tech}</div>))}</div>
+    </div>
+    <div class="row">
+      <div class="left">
+        {entry.data.links.map((link: any)=>(<div>{link.name}</div>))}
+      </div>
+      <div class="right links">
+        {entry.data.links.map((link: any)=>(<Link href={link.url} external size="small">{link.value}</Link>))}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .info {
+    position: sticky;
+    top: var(--gutter);
+  }
+  .info h1, .info header {
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin-bottom: .5rem;
+    color: var(--color-text-muted);
+  }
+  .info h1 {
+    margin-bottom: var(--gutter);
+    color: var(--color-text);
+  }
+
+  .project-data {
+    margin-top: 2rem;
+  }
+  .project-data .row {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--gutter);
+    padding: .5rem 0;
+    border-top: 1px solid var(--color-border);
+    font-size: .75rem;
+    text-transform: uppercase;
+    font-family: var(--font-monospace);
+    line-height: 1.5rem;
+  }
+  .project-data .row .left {
+    color: var(--color-text-muted);
+  }
+  .project-data .row .right {
+    grid-column: span 2 / span 2;
+  }
+</style>
+
+<style is:global>
+  .info header p {
+    margin-bottom: .5rem;
+  }
+</style>
