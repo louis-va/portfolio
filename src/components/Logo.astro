@@ -1,35 +1,121 @@
 ---
 ---
 
-<div class="logo">
-  <div class="default">
-    <svg width="70" height="60" viewBox="0 0 70 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path fill-rule="evenodd" clip-rule="evenodd" d="M20 0H10V10H20V20H0V30H10V40H20V60H50V40H60V30H70V20H50V10H60V0H50V10H40V20H30V10H20V0ZM50 40V30H40V40H50ZM20 40V30H30V40H20Z" fill="currentColor"/>
-    </svg>        
-  </div>
-  <div class="hover">
-    <svg width="70" height="60" viewBox="0 0 70 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path fill-rule="evenodd" clip-rule="evenodd" d="M30 0H20V20H10V10H0V20H10V40H20V60H50V40H60V20H70V10H60V20H50V0H40V20H30V0ZM50 40H40V30H50V40ZM20 40V30H30V40H20Z" fill="currentColor"/>
-    </svg>        
-  </div>
+<div id="logo" transition:persist>
+  <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect class="sq1" y="6" width="6" height="6" fill="currentColor"/>
+    <rect class="sq2" x="6" width="6" height="6" fill="currentColor"/>
+    <rect class="sq3" x="18" width="6" height="6" fill="currentColor"/>
+    <rect class="sq4" x="24" y="6" width="6" height="6" fill="currentColor"/>
+    <rect class="sq5" y="18" width="6" height="6" fill="currentColor"/>
+    <rect class="sq6" x="6" y="24" width="6" height="6" fill="currentColor"/>
+    <rect class="sq7" x="18" y="24" width="6" height="6" fill="currentColor"/>
+    <rect class="sq8" x="24" y="18" width="6" height="6" fill="currentColor"/>
+    <rect class="sq9" x="12" y="12" width="6" height="6" fill="currentColor"/>
+  </svg>
 </div>
 
-<style>
-  .logo svg {
+<style is:global>
+  #logo rect {
     color: var(--color-accent);
-    width: 2.25rem;
-    height: auto;
+    transition: transform 250ms ease-in-out;
   }
-  .logo .default {
-    display: block;
+  
+  /* DEFAULT */
+  #logo[data-logo="default"] rect.sq1,
+  #logo[data-logo="default"] rect.sq4 {
+    transform: translateY(0px);
+    transition-delay: 250ms;
   }
-  .logo:hover .default {
-    display: none;
+
+  #logo[data-logo="default"] rect.sq2,
+  #logo[data-logo="default"] rect.sq3 {
+    transform: translateY(0px);
   }
-  .logo .hover {
-    display: none;
+
+  #logo[data-logo="default"] rect.sq5,
+  #logo[data-logo="default"] rect.sq8 {
+    transform: translateY(0px);
+    transition-delay: 250ms;
   }
-  .logo:hover .hover {
-    display: block;
+  
+  #logo[data-logo="default"] rect.sq6,
+  #logo[data-logo="default"] rect.sq7 {
+    transform: translateY(0px);
   }
+
+  /* CROSS */
+  #logo[data-logo="cross"] rect.sq1,
+  #logo[data-logo="cross"] rect.sq4 {
+    transform: translateY(-6px);
+  }
+
+  #logo[data-logo="cross"] rect.sq2,
+  #logo[data-logo="cross"] rect.sq3 {
+    transform: translateY(6px);
+    transition-delay: 250ms;
+  }
+
+  #logo[data-logo="cross"] rect.sq5,
+  #logo[data-logo="cross"] rect.sq8 {
+    transform: translateY(6px);
+  }
+  
+  #logo[data-logo="cross"] rect.sq6,
+  #logo[data-logo="cross"] rect.sq7 {
+    transform: translateY(-6px);
+    transition-delay: 250ms;
+  }
+
+  /* TOP ARROW */
+  #logo[data-logo="arrow"] rect.sq9 {
+    transform: translateY(-6px);
+  }
+
+  #logo[data-logo="arrow"] rect.sq1 {
+    transform: translateX(12px);
+    transition-delay: 250ms;
+  }
+
+  #logo[data-logo="arrow"] rect.sq4 {
+    transform: translateX(-12px);
+    transition-delay: 250ms;
+  }
+
+  #logo[data-logo="arrow"] rect.sq2,
+  #logo[data-logo="arrow"] rect.sq3 {
+    transform: translateY(12px);
+  }
+
+  #logo[data-logo="arrow"] rect.sq5,
+  #logo[data-logo="arrow"] rect.sq8 {
+    transform: translateY(0px);
+  }
+
+  #logo[data-logo="arrow"] rect.sq6,
+  #logo[data-logo="arrow"] rect.sq7 {
+    transform: translateY(-12px);
+  }
+
 </style>
+
+<script>
+  import getLogo from '../utils/logo.utils'
+
+  function setTopArrow() {
+    addEventListener("scroll", (event) => {
+      if (getLogo()=="default") {
+        if (window.scrollY<250) {
+          document.getElementById('logo')?.setAttribute("data-logo", "default");
+        } else {
+          document.getElementById('logo')?.setAttribute("data-logo", "arrow");
+        }
+      }
+    });
+  }
+
+  document.addEventListener('astro:page-load', () => {
+    document.getElementById('logo')?.setAttribute("data-logo", getLogo());
+    setTopArrow();
+  });
+</script>

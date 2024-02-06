@@ -13,16 +13,14 @@ const { title } = Astro.props;
 const fadeAnimation = {
   old: {
     name: "fade-out",
-    duration: "0.15s",
+    duration: "0.2s",
     easing: "ease-out",
-    fillMode: "forwards",
   },
   new: {
     name: "fade-in",
-		delay: "0.3s",
-    duration: "0.15s",
+		delay: ".3s",
+    duration: ".2s",
     easing: "ease-out",
-    fillMode: "backwards",
   },
 };
 
@@ -51,8 +49,8 @@ const pageAnimation = {
 		</script>
 	</head>
 	<body>
+		<Header />
 		<Container>
-			<Header />
 			<main transition:animate={pageAnimation}>
 				<slot />
 			</main>
@@ -140,22 +138,18 @@ const pageAnimation = {
 	/* VIEW TRANSITION ANIMATION */
 	@keyframes fade-out {
     from {
-      transform: translateY(0rem);
 			opacity: 1;
     }
     to {
-      transform: translateY(.5rem);
 			opacity: 0;
     }
   }
 
 	@keyframes fade-in {
     from {
-      transform: translateY(-.5rem);
 			opacity: 0;
     }
     to {
-      transform: translateY(0rem);
 			opacity: 1;
     }
   }

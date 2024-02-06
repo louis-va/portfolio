@@ -3,20 +3,35 @@ import Logo from "../components/Logo.astro"
 import ThemeSwitch from "../components/ThemeSwitch.astro"
 ---
 
-<header>
-  <a href="/" aria-label="Home">
-    <Logo />
-  </a>
-  <div class="options">
-    <ThemeSwitch />
+<header transition:animate="none">
+  <div class="wrapper">
+    <a href="/" aria-label="Home">
+      <Logo />
+    </a>
+    <div class="options">
+      <ThemeSwitch />
+    </div>
   </div>
 </header>
 
 <style>
   header {
+    position: fixed;
+    width: 100%;
+    z-index: 50;
+    background-color: var(--color-bg);
+    padding: 0rem 2rem;
+  }
+  header .wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 4rem;
+    padding: 1rem 0rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  @media screen and (max-width: 680px) {
+    header {
+      padding: 0rem 1.25rem;
+    }
   }
 </style>

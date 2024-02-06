@@ -2,9 +2,11 @@
 ---
 
 <div class="arrow">
-  <div class="sq sq1"></div>
-  <div class="sq sq2"></div>
-  <div class="sq sq3"></div>
+  <svg width="6" height="9" viewBox="0 0 6 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect class="sq1" x="0" y="0" width="3" height="3" fill="currentColor"/>
+    <rect class="sq2" x="3" y="3" width="3" height="3" fill="currentColor"/>
+    <rect class="sq3" x="0" y="6" width="3" height="3" fill="currentColor"/>
+  </svg>       
 </div>
 
 <style is:global>
@@ -12,42 +14,42 @@
     position: relative;
     margin-right: .5rem;
   }
-  .arrow .sq {
+  .arrow svg rect {
     position: relative;
-    background-color: var(--color-accent);
-    width: 2.5px;
-    height: 2.5px;
-    transition: all 75ms ease-in;
-  }
-  .arrow .sq.sq1 {
-    top: 2.5px;
-  }
-  .arrow .sq.sq2 {
-    left: 0px;
-  }
-  .arrow .sq.sq3 {
-    bottom: 2.5px;
+    color: var(--color-accent);
+    transition: transform 75ms;
   }
 
-  .arrow-target:hover .arrow .sq.sq1 {
-    top: 0px;
+  .arrow svg .sq1 {
+    transform: translateY(3px);
   }
-  .arrow-target:hover .arrow .sq.sq2 {
-    left: 2.5px;
+  .arrow svg .sq2 {
+    transform: translateX(-3px);
+    transition-delay: 75ms;
   }
-  .arrow-target:hover .arrow .sq.sq3 {
-    bottom: 0px;
+  .arrow svg .sq3 {
+    transform: translateY(-3px);
+  }
+
+  .arrow-target:hover svg .sq1 {
+    transform: translateY(0px);
+  }
+  .arrow-target:hover svg .sq2 {
+    transform: translateX(0px);
+  }
+  .arrow-target:hover svg .sq3 {
+    transform: translateY(0px);
   }
 
   @media (hover: none) {
-    .arrow .sq.sq1 {
-      top: 0px;
+    .arrow svg .sq1 {
+      transform: translateY(0px);
     }
-    .arrow .sq.sq2 {
-      left: 2.5px;
+    .arrow svg .sq2 {
+      transform: translateX(0px);
     }
-    .arrow .sq.sq3 {
-      bottom: 0px;
+    .arrow svg .sq3 {
+      transform: translateY(0px);
     }
   }
 </style>
