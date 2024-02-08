@@ -10,8 +10,14 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.3.0",
     "@astrojs/check": "^0.4.1",
+    "@splinetool/loader": "^1.0.48",
+    "astro": "^4.3.0",
+    "camera-controls": "^2.7.4",
+    "three": "^0.161.0",
     "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@types/three": "^0.161.2"
   }
 }

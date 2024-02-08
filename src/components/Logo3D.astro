@@ -1,0 +1,147 @@
+---
+---
+
+<div id="logo-3d"></div>
+
+<style>
+  #logo-3d {
+    opacity: .20;
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
+<script>
+  import { getPageFromUrl } from '../utils/pages.utils'
+
+  import * as THREE from 'three';
+  import { AsciiEffect } from 'three/addons/effects/AsciiEffect.js';
+  import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+  import CameraControls from 'camera-controls';
+
+  document.addEventListener('astro:page-load', () => {
+    let camera: THREE.OrthographicCamera;
+    let controls: CameraControls;
+    let scene: THREE.Scene;
+    let renderer: THREE.WebGLRenderer;
+    let effect: AsciiEffect;
+
+    const container = document.getElementById('logo-3d');
+    const clock = new THREE.Clock();
+    const start = Date.now();
+
+    let posX = -.75;
+    let posY = 0;
+    let posZ = 0;
+
+    if (getPageFromUrl()==='home') {
+      init();
+      animate();
+
+      document.addEventListener('scroll', (event) => {
+        posY = window.scrollY / -100;
+      })
+
+      document.addEventListener('astro:before-swap', () => { // Clear the canvas before page swap
+        container!.innerHTML='';
+        renderer.dispose();
+      })
+    }
+
+    function init() {
+      // Camera
+      camera = new THREE.OrthographicCamera(
+        container!.offsetWidth / -2,
+        container!.offsetWidth / 2,
+        container!.offsetHeight / 2,
+        container!.offsetHeight / -2,
+        -250,
+        250
+      );
+      camera.zoom = container!.offsetHeight / 6;
+
+      // Scene
+      scene = new THREE.Scene();
+      scene.background = null;
+      //scene.add(new THREE.AxesHelper());
+
+      // Lights
+      const pointLight1 = new THREE.PointLight( 0xffffff, 10, 0, 0 );
+      pointLight1.position.set( 500, 500, 500 );
+      scene.add( pointLight1 );
+
+      const pointLight2 = new THREE.PointLight( 0xffffff, 1, 0, 0 );
+      pointLight2.position.set( -500, -500, -500 );
+      scene.add( pointLight2 );
+
+      const pointLight3 = new THREE.PointLight( 0xffffff, 2, 0, 0 );
+      pointLight3.position.set( -500, 500, 500 );
+      scene.add( pointLight3 );
+
+      // Load model
+      const loader = new GLTFLoader();
+      loader.load(
+        'logo-3d.gltf',
+        function ( gltf ) {
+          scene.add( gltf.scene );
+          gltf.animations;
+          gltf.scene;
+          gltf.scenes;
+          gltf.cameras;
+          gltf.asset;
+        }
+      );
+      
+      // Render scene
+      renderer = new THREE.WebGLRenderer({ alpha: true });
+      renderer.setSize( container!.offsetWidth, container!.offsetHeight );
+      renderer.setClearAlpha(0);
+      renderer.setClearColor( 0x000000, 1);
+
+      // ASCII effect
+      effect = new AsciiEffect( renderer, '.▫▪□▣', { invert: true } );
+      effect.setSize( container!.offsetWidth, container!.offsetHeight );
+      effect.domElement.style.color = '#777777';
+
+      // Create canvas
+      container!.appendChild( effect.domElement ); //renderer.domElement
+      
+      // Controls
+      CameraControls.install( { THREE: THREE } );
+      controls = new CameraControls( camera, effect.domElement );
+      controls.smoothTime = .001;
+      controls.setPosition(posX, posY, posZ, false);
+      controls.enabled = false;
+
+      window.addEventListener( 'resize', onWindowResize );
+    }
+
+    function onWindowResize() {
+      if (getPageFromUrl()==='home') {
+        camera.left = container!.offsetWidth / - 2;
+        camera.right = container!.offsetWidth / 2;
+        camera.top = container!.offsetHeight / 2;
+        camera.bottom = container!.offsetHeight / - 2;
+        camera.zoom = container!.offsetHeight / 6;
+        renderer.setSize(container!.offsetWidth, container!.offsetHeight);
+        effect.setSize( container!.offsetWidth, container!.offsetHeight );
+        camera.updateProjectionMatrix();
+      }
+    }
+
+    function animate() {
+      if (getPageFromUrl()==='home') {
+        requestAnimationFrame( animate );
+        const delta = clock.getDelta();
+        const timer = (Date.now() - start);
+
+        posZ = ((Math.sin(timer * 0.0005)) * 15)
+        controls.setPosition(posX, posY, posZ, true);
+
+        camera.updateProjectionMatrix();
+        controls.update(delta);
+        effect.render( scene, camera );
+      }
+    }
+  });
+</script>

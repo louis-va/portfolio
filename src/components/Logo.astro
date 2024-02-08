@@ -70,6 +70,7 @@
   /* TOP ARROW */
   #logo[data-logo="arrow"] rect.sq9 {
     transform: translateY(-6px);
+    transition-delay: 250ms;
   }
 
   #logo[data-logo="arrow"] rect.sq1 {
@@ -100,12 +101,12 @@
 </style>
 
 <script>
-  import getLogo from '../utils/logo.utils'
+  import { getLogo } from '../utils/pages.utils'
 
   function setTopArrow() {
     addEventListener("scroll", (event) => {
       if (getLogo()=="default") {
-        if (window.scrollY<250) {
+        if (window.scrollY<20) {
           document.getElementById('logo')?.setAttribute("data-logo", "default");
         } else {
           document.getElementById('logo')?.setAttribute("data-logo", "arrow");

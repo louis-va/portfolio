@@ -2,7 +2,7 @@ function getPageFromUrl() {
   const pathname = window.location.pathname;
   const pathParts = pathname.split('/');
   const pageName = pathParts[1];
-  return pageName;
+  return (pageName==='')?'home':pageName;
 }
 
 function getLogo() {
@@ -13,4 +13,4 @@ function getLogo() {
   }
 }
 
-export default getLogo;
+export { getLogo, getPageFromUrl };
