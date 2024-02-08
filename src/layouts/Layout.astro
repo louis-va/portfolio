@@ -2,6 +2,7 @@
 import { ViewTransitions, fade } from 'astro:transitions';
 import Container from './Container.astro';
 import Header from './Header.astro';
+import Footer from './Footer.astro';
 
 interface Props {
 	title: string;
@@ -34,7 +35,7 @@ const pageAnimation = {
 <html lang="en" transition:animate='none'>
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="I’m a fullstack developer that enjoys working on technical and creative applications." />
+		<meta name="description" content="Portfolio showcasing my personal work." />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
@@ -55,6 +56,7 @@ const pageAnimation = {
 				<slot />
 			</main>
 		</Container>
+		<Footer />
 	</body>
 </html>
 

@@ -1,0 +1,45 @@
+---
+import Logo from "../components/Logo.astro"
+---
+
+<footer>
+  <div class="container">
+    <div class="copyright">
+      ©2024 ■ Louis Van Aken
+    </div>
+    <div class="logo">
+      <img src="./logo.svg" alt="Logo">
+    </div>
+  </div>
+</footer>
+
+<style>
+  footer {
+    padding: 0rem 2rem;
+    max-width: 1920px;
+    margin: 4rem auto 0rem auto;
+  }
+  footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0rem 2rem 0rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  footer .copyright {
+    font-family: var(--font-monospace);
+    font-size: .75rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+  }
+  footer .logo {
+    width: 1.5rem;
+    height: auto;
+  }
+  @media screen and (max-width: 680px) {
+    footer {
+      padding: 0rem 1.25rem;
+    }
+  }
+</style>

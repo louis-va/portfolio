@@ -4,7 +4,7 @@ import ThemeSwitch from "../components/ThemeSwitch.astro"
 ---
 
 <header transition:animate="none">
-  <div class="wrapper">
+  <div class="container">
     <a href="/" aria-label="Home">
       <Logo />
     </a>
@@ -21,8 +21,10 @@ import ThemeSwitch from "../components/ThemeSwitch.astro"
     z-index: 50;
     background-color: var(--color-bg);
     padding: 0rem 2rem;
+    max-width: 1920px;
+    margin: auto;
   }
-  header .wrapper {
+  header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
