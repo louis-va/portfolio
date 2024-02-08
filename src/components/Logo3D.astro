@@ -28,7 +28,7 @@
     const start = Date.now();
 
     let posX = -.75;
-    let posY = 0;
+    let posY = -.5;
     let posZ = 0;
 
     if (getPageFromUrl()==='home') {
@@ -36,7 +36,7 @@
       animate();
 
       document.addEventListener('scroll', (event) => {
-        posY = window.scrollY / -100;
+        posY = -.5 + window.scrollY / -75;
       })
 
       document.addEventListener('astro:before-swap', () => { // Clear the canvas before page swap

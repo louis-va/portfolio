@@ -3,7 +3,7 @@ title: 'Popcorn Palace'
 id: 2
 type: 'Web app'
 year: 2023
-stack: ['React', 'Typescript', 'Tailwind', 'Express', 'Mongo DB',]
+stack: ['React', 'Typescript', 'Tailwind', 'Express', 'Mongodb',]
 links: [
   {name: 'Site', value: 'popa.lou-va.com', url: 'https://popa.lou-va.com'},
   {name: 'Github', value: 'github.com', url: 'https://github.com/louis-va/popcorn-palace'},

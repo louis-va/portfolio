@@ -5,10 +5,10 @@ import Logo from "../components/Logo.astro"
 <footer>
   <div class="container">
     <div class="copyright">
-      ©2024 ■ Louis Van Aken
+      ©2024
     </div>
-    <div class="logo">
-      <img src="./logo.svg" alt="Logo">
+    <div class="name">
+      Louis Van Aken
     </div>
   </div>
 </footer>
@@ -23,7 +23,7 @@ import Logo from "../components/Logo.astro"
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 0rem 2rem 0rem;
+    padding: 1rem 0rem 1.5rem 0rem;
     border-top: 1px solid var(--color-border);
   }
 
@@ -33,9 +33,11 @@ import Logo from "../components/Logo.astro"
     color: var(--color-text-muted);
     text-transform: uppercase;
   }
-  footer .logo {
-    width: 1.5rem;
-    height: auto;
+  footer .name {
+    font-family: var(--font-monospace);
+    font-size: .75rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
   }
   @media screen and (max-width: 680px) {
     footer {
