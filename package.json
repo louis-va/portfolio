@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -11,13 +11,10 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.4.1",
-    "@splinetool/loader": "^1.0.48",
+    "@types/three": "^0.161.2",
     "astro": "^4.3.0",
     "camera-controls": "^2.7.4",
     "three": "^0.161.0",
     "typescript": "^5.3.3"
-  },
-  "devDependencies": {
-    "@types/three": "^0.161.2"
   }
 }
