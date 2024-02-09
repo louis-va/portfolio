@@ -8,29 +8,29 @@ import Logo3D from "./Logo3D.astro"
   <div class="about">
     <div class="intro">
       <div>
-        <h1>Louis Van Aken</h1>
+        <h1 data-animate="slide-in">Louis Van Aken</h1>
       </div>
       <div>
-        <p>I’m a fullstack developer that enjoys working on technical and creative applications.</p>
-        <p>I’m currently studying at Becode and looking for an internship.</p>
+        <p data-animate="slide-in" data-delay="1">I’m a fullstack developer that enjoys working on technical and creative applications.</p>
+        <p data-animate="slide-in" data-delay="2">I’m currently studying at Becode and looking for an internship.</p>
       </div>
     </div>
     <div class="info">
-      <div>
+      <div data-animate="slide-in" data-delay="3">
         <p>
           <Time /><br/>
           BRUSSELS,<br/>
           BELGIUM
         </p>
       </div>
-      <div>
+      <div data-animate="slide-in" data-delay="4">
         <Link href="https://github.com/louis-va" external>GITHUB</Link>
         <Link href="https://github.com/louis-va" external>LINKEDIN</Link>
         <Link href="mailto:vanakenlouis@gmail.com">EMAIL</Link>
       </div>
     </div>
   </div>
-  <div class="logo-3d-container">
+  <div class="logo-3d-container" data-animate="slide-in">
     <div class="logo-3d-canvas">
       <Logo3D />
     </div>

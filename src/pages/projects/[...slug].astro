@@ -23,7 +23,7 @@ const { entry } = Astro.props;
       <ProjectInfo entry={entry} />
     </div>
     <div class="images">
-      <div class="thumbnail">
+      <div class="thumbnail" data-animate="slide-in" data-delay="3">
         <ProjectImage 
           src={`${entry.slug}/thumbnail`}
           alt={entry.data.title}

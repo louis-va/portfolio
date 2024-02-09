@@ -11,31 +11,33 @@ const { Content } = await entry.render();
 
 <div class="info">
   <header>
-    <h1>{entry.data.title}</h1>
-    <Content />
+    <h1 data-animate="slide-in">{entry.data.title}</h1>
+    <div data-animate="slide-in" data-delay="1">
+      <Content />
+    </div>
   </header>
   <div class="project-data">
-    <div class="row">
+    <div class="row" data-animate="slide-in" data-delay="2">
       <div class="left">ID</div>
       <div class="right">{entry.data.id<10?`0${entry.data.id}`:entry.data.id}</div>
     </div>
-    <div class="row">
+    <div class="row" data-animate="slide-in" data-delay="3">
       <div class="left">Type</div>
       <div class="right">{entry.data.type}</div>
     </div>
-    <div class="row">
+    <div class="row" data-animate="slide-in" data-delay="4">
       <div class="left">Year</div>
       <div class="right">{entry.data.year}</div>
     </div>
-    <div class="row">
+    <div class="row" data-animate="slide-in" data-delay="5">
       <div class="left">Role</div>
       <div class="right">{entry.data.roles.map((role: string)=>(<div>{role}</div>))}</div>
     </div>
-    <div class="row">
+    <div class="row" data-animate="slide-in" data-delay="6">
       <div class="left">Stack</div>
       <div class="right">{entry.data.stack.map((tech: string)=>(<div>{tech}</div>))}</div>
     </div>
-    <div class="row">
+    <div class="row" data-animate="slide-in" data-delay="7">
       <div class="left">
         {entry.data.links.map((link: any)=>(<div>{link.name}</div>))}
       </div>

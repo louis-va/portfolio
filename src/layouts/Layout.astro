@@ -159,4 +159,68 @@ const pageAnimation = {
 			opacity: 1;
     }
   }
+
+	/* ELEMENTS ANIMATION */
+	@keyframes slide-in {
+    from {
+			opacity: 0;
+			transform: translateY(-1.5rem);
+    }
+    to {
+			opacity: 1;
+			transform: translateY(0rem);
+    }
+  }
+
+	[data-animate="slide-in"] {
+		opacity: 0;
+		animation: slide-in .6s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+		animation-delay: .2s;
+	}
+	/* dirty code but maybe someday we can use attr() */
+	[data-delay="1"] {
+		animation-delay: .25s;
+	}
+	[data-delay="2"] {
+		animation-delay: .3s;
+	}
+	[data-delay="3"] {
+		animation-delay: .35s;
+	}
+	[data-delay="4"] {
+		animation-delay: .4s;
+	}
+	[data-delay="5"] {
+		animation-delay: .45s;
+	}
+	[data-delay="6"] {
+		animation-delay: .5s;
+	}
+	[data-delay="7"] {
+		animation-delay: .55s;
+	}
+	[data-delay="8"] {
+		animation-delay: .6s;
+	}
+	[data-delay="9"] {
+		animation-delay: .65s;
+	}
+	[data-delay="10"] {
+		animation-delay: .7s;
+	}
+	[data-delay="11"] {
+		animation-delay: .75s;
+	}
+	[data-delay="12"] {
+		animation-delay: .8s;
+	}
+	[data-delay="13"] {
+		animation-delay: .85s;
+	}
+	[data-delay="14"] {
+		animation-delay: .90s;
+	}
+	[data-delay="15"] {
+		animation-delay: .95s;
+	}
 </style>

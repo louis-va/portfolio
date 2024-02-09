@@ -9,12 +9,14 @@ projects.sort((a, b) => {
 ---
 
 <section class="grid">
-	{projects.map(project => (
-		<ProjectCard
-			name={project.data.title}
-			slug={project.slug}
-			number={project.data.id}
-		/>
+	{projects.map((project, index) => (
+    <div data-animate="slide-in" data-delay={index+6}>
+      <ProjectCard
+        name={project.data.title}
+        slug={project.slug}
+        number={project.data.id}
+      />
+    </div>
 	))}
 </section>
 
