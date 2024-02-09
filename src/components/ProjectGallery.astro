@@ -11,7 +11,7 @@ const { images, folder } = Astro.props;
 
 <div class="gallery">
   {images.map((image, index) => (
-    <div data-animate="slide-in" data-delay={index+4}>
+    <div data-animate="slide-in" data-delay={index+8}>
       <ProjectImage 
         src={`${folder}/${image}`}
         alt={`Screenshot ${index}`}

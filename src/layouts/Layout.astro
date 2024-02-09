@@ -46,7 +46,12 @@ const pageAnimation = {
 			document.addEventListener('astro:after-swap', () => {
       	document.documentElement.setAttribute("data-theme", getTheme());
 			});
-			document.documentElement.setAttribute("data-theme", getTheme());
+		</script>
+		<script is:inline>
+			/* avoid flickering on first page load. removed the getTheme import, only way to inline js */
+			const preferedTheme = (window.matchMedia("(prefers-color-scheme: dark)").matches) ? 'dark' : 'light';
+			const theme = localStorage.getItem("theme") || preferedTheme;
+			document.documentElement.setAttribute("data-theme", theme);
 		</script>
 	</head>
 	<body>
