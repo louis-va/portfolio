@@ -25,9 +25,3 @@ All commands are run from the root of the project, from a terminal:
 | `npm run dev`             | Starts local dev server at `localhost:4321`      |
 | `npm run build`           | Build your production site to `./dist/`          |
 | `npm run preview`         | Preview your build locally, before deploying     |
-
-## Acknowledgments
-
-I was inspired by these two websites:
-- [Jonas Emmertsen](https://jonasemmertsen.com/)
-- [Harry Atkins](https://harryjatkins.com/projects/independent-designers-collective/)
