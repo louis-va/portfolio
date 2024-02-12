@@ -2,6 +2,7 @@
 import Link from "./Link.astro"
 import Time from "./Time.astro"
 import Logo3D from "./Logo3D.astro"
+import Status from "./Status.astro"
 ---
 
 <section class="hero">
@@ -12,7 +13,9 @@ import Logo3D from "./Logo3D.astro"
       </div>
       <div>
         <p data-animate="slide-in" data-delay="1">I’m a fullstack developer that enjoys working on technical and creative applications.</p>
-        <p data-animate="slide-in" data-delay="2">I’m currently studying at Becode and looking for an internship.</p>
+        <div data-animate="slide-in" data-delay="2">
+          <Status text="I'm available for work." />
+        </div>
       </div>
     </div>
     <div class="info">
@@ -101,7 +104,6 @@ import Logo3D from "./Logo3D.astro"
     }
     .about {
       grid-column: span 1 / span 1;
-      border-bottom: 1px solid var(--color-border);
     }
     .game {
       grid-column: span 1 / span 1;

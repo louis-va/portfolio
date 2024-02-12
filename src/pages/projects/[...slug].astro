@@ -3,18 +3,25 @@ import Layout from '../../layouts/Layout.astro';
 import ProjectImage from '../../components/ProjectImage.astro';
 import ProjectInfo from '../../components/ProjectInfo.astro';
 import ProjectGallery from '../../components/ProjectGallery.astro';
+import PageButtons from '../../components/PageButtons.astro'
+import { getAdjacentElements } from '../../utils/array.utils'
 
 import { getCollection } from 'astro:content';
 
 // Generate a new path for every project
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
-  return projects.map(entry => ({
-    params: { slug: entry.slug }, props: { entry },
+  return projects.map((entry, index) => ({
+    params: { slug: entry.slug },
+    props: {
+      entry,
+      prev: getAdjacentElements(projects, index)[0],
+      next: getAdjacentElements(projects, index)[1]
+    },
   }));
 }
 
-const { entry } = Astro.props;
+const { entry, prev, next } = Astro.props;
 ---
 
 <Layout title={`Louis Van Aken | ${entry.data.title}`}>
@@ -37,6 +44,26 @@ const { entry } = Astro.props;
       )}
     </div>
   </div>
+  <nav>
+    <div class="left">
+      <PageButtons
+        name={prev.data.title}
+        slug={prev.slug}
+        number={prev.data.id}
+        type={prev.data.type}
+        position="prev"
+      />
+    </div>
+    <div class="right">
+      <PageButtons
+        name={next.data.title}
+        slug={next.slug}
+        number={next.data.id}
+        type={next.data.type}
+        position="next"
+      />
+    </div>
+  </nav>
 </Layout>
 
 <style>
@@ -48,6 +75,18 @@ const { entry } = Astro.props;
   }
   @media screen and (max-width: 960px) {
     .layout {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+  }
+  nav {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--gutter);
+    margin-top: 6rem;
+  }
+  @media screen and (max-width: 680px) {
+    nav {
       grid-template-columns: repeat(1, minmax(0, 1fr));
     }
   }

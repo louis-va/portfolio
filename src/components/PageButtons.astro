@@ -1,0 +1,56 @@
+---
+import Arrow from './Arrow.astro';
+
+interface Props {
+	name: string;
+  slug: string;
+  number: number;
+  type: string;
+  position: 'prev' | 'next';
+}
+
+const { name, slug, number, type, position } = Astro.props;
+---
+
+<a href={`/projects/${slug}`} class={`arrow-target ${position=='prev'?'prev':'next'}`}>
+  <div class={`arrow ${position=='prev'?'prev':'next'}`}>
+    <Arrow />
+  </div>
+  <div>
+    <div class="title">
+      {number<10?`0${number}`:number}. {name}
+    </div>
+    <div class="page">
+      {position=='prev'?'Previous':'Next'}
+    </div>
+  </div>
+</a>
+
+<style>
+  a {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: .5rem;
+    text-decoration: none;
+    font-family: var(--font-monospace);
+    font-size: .85rem;
+    text-transform: uppercase;
+  }
+
+  .title {
+    color: var(--color-text);
+  }
+  .page {
+    color: var(--color-text-muted);
+  }
+  .arrow {
+    flex-shrink: unset;
+  }
+  .arrow.prev {
+    transform: rotate(180deg);
+  }
+</style>

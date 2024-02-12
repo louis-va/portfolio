@@ -18,7 +18,9 @@ const { href, external=false, size='base' } = Astro.props;
     class={`arrow-target ${size}`}
   >
     <Arrow />
-    <slot />
+    <div class="content">
+      <slot />
+    </div>
   </a>
 </div>
 
@@ -34,5 +36,8 @@ const { href, external=false, size='base' } = Astro.props;
   }
   a.small {
     font-size: .75rem;
+  }
+  a .content {
+    margin-left: .5rem;
   }
 </style>
