@@ -18,10 +18,10 @@ const { name, slug, number, type, position } = Astro.props;
   </div>
   <div>
     <div class="title">
-      {name}
+      {position=='prev'?'Previous':'Next'}
     </div>
     <div class="page">
-      {position=='prev'?'Previous':'Next'}
+      {name}
     </div>
   </div>
 </a>

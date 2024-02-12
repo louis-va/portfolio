@@ -12,8 +12,6 @@ function getAdjacentElements(array: any[], index: number) {
   } else if (index === length - 1) {
       nextIndex = 0; // second element
   }
-
-  console.table([index, prevIndex, nextIndex]);
   
   return [array[prevIndex], array[nextIndex]];
 }
