@@ -5,11 +5,13 @@ import ThemeSwitch from "../components/ThemeSwitch.astro"
 
 <header transition:animate="none">
   <div class="container">
-    <a href="/" aria-label="Home">
-      <Logo />
-    </a>
-    <div class="options">
-      <ThemeSwitch />
+    <div class="wrapper">
+      <a href="/" aria-label="Home">
+        <Logo />
+      </a>
+      <div class="options">
+        <ThemeSwitch />
+      </div>
     </div>
   </div>
 </header>
@@ -19,20 +21,24 @@ import ThemeSwitch from "../components/ThemeSwitch.astro"
     position: fixed;
     width: 100%;
     z-index: 50;
-    background-color: var(--color-bg);
   }
   header .container {
+    width: 100%;
+    max-width: 1920px;
+    margin: auto;
+    padding: 0rem 2rem;
+  }
+  header .wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1920px;
-    margin: auto;
-    padding: 1rem 2rem;
+    padding: 1rem 0rem;
+    background-color: var(--color-bg);
     border-bottom: 1px solid var(--color-border);
   }
   @media screen and (max-width: 680px) {
     header .container {
-      padding: 1rem 1.25rem;
+      padding: 0rem 1.25rem;
     }
   }
 </style>
