@@ -88,12 +88,13 @@ const { entry, prev, next } = Astro.props;
   @media screen and (max-width: 680px) {
     nav {
       grid-template-columns: repeat(1, minmax(0, 1fr));
+      margin-top: 3rem;
     }
-  }
-  nav .left {
-    order: 2;
-  }
-  nav .right {
-    order: 1;
+    nav .left {
+      order: 2;
+    }
+    nav .right {
+      order: 1;
+    }
   }
 </style>

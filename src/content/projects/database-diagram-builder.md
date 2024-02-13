@@ -11,4 +11,4 @@ images: ['screenshot-1']
 ---
 A tool to build relational database diagrams directly in Figma. It uses the auto layout feature for a user friendly, drag & drop building experience.
 
-The tool has 5K+ users and 180+ likes on Figma community.
+The tool has 5K+ users and 180+ likes on Figma Community.
