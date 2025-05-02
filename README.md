@@ -2,7 +2,7 @@
 
 A website portfolio to showcase some of my work.
 
-→ [www.lou-va.com](https://www.lou-va.com/)
+→ [louis-va.dev](https://louis-va.dev/)
 
 ## About
 
